@@ -1,4 +1,5 @@
 import numpy
+import math
 
 luminosity = 200 * 10**9 # 1/barn
 sigma_ee_phi = 3*10**-6  # barn
@@ -61,3 +62,13 @@ def getTheta(x,y,z):
 
 def getPhi(x, y, z):
     return numpy.arctan2(y,x)
+
+def angle_of_vectors(a,b,c,d,e,f):
+    dotProduct = a*d + b*e + c*f
+         # for three dimensional simply add dotProduct = a*c + b*d  + e*f 
+    modOfVector1 = numpy.sqrt(a*a + b*b + c*c)*numpy.sqrt(d*d + e*e + f*f) 
+         # for three dimensional simply add modOfVector = math.sqrt( a*a + b*b + e*e)*math.sqrt(c*c + d*d +f*f) 
+    angle = dotProduct/modOfVector1
+    angleInDegree = numpy.degrees(numpy.arccos(angle))
+    return angleInDegree
+     
